@@ -1,0 +1,581 @@
+/* ─── Dark Theme (default) ───────────────────────────────────
+     Base      → deep dark teal-slate (#152030)
+     Panel     → dark teal-navy (#1a2840)
+     Cards     → lifted dark teal (#1e3048)
+     Accent    → vivid cyan (#00d4c8)
+     Secondary → coral red (#ff6550) — danger & highlights
+     Borders   → muted dark teal-gray
+──────────────────────────────────────────────────────────── */
+:root {
+    --bg:               #111c2d;
+    --text:             #e2eaf4;
+    --panel:            #172135;
+    --panel-border:     #1e3050;
+    --field-bg:         #1a2840;
+    --field-border:     #254060;
+    --button-bg:        #1a2e44;
+    --button-hover:     #1e3a55;
+    --button-border:    #254a6a;
+    --task-container-bg:#0e1825;
+    --task-bg:          #1a2840;
+    --muted-text:       #5a7a9a;
+    --focus:            #00d4c8;
+    --focus-shadow:     rgba(0, 212, 200, 0.22);
+    --danger:           #ff6550;
+    --radius-lg:        18px;
+    --radius-md:        12px;
+    --radius-sm:        10px;
+    --shadow-soft:      0 10px 32px rgba(0, 0, 0, 0.5);
+    --shadow-card:      0 4px 18px rgba(0, 0, 0, 0.4);
+    --shadow-focus:     0 0 0 3px var(--focus-shadow);
+}
+
+/* Dark-theme specific refinements */
+body:not(.light-theme) h2 {
+    color: #00d4c8;
+}
+
+body:not(.light-theme) .count-badge {
+    background: #0e2d3a;
+    border-color: #0e4a55;
+    color: #00d4c8;
+}
+
+body:not(.light-theme) .task:hover {
+    box-shadow: 0 0 0 1px #00d4c840, 0 8px 28px rgba(0, 0, 0, 0.55);
+    border-color: #00d4c860;
+}
+
+body:not(.light-theme) .delete-btn {
+    background: #2d1510;
+    color: #ff6550;
+    border: 1px solid #7f2510;
+}
+
+body:not(.light-theme) .delete-btn:hover {
+    background: #ff6550;
+    color: #ffffff;
+    border-color: #ff6550;
+}
+
+body:not(.light-theme) #addTaskBtn {
+    background: #00d4c8;
+    color: #0a1a28;
+    border-color: #00b8ae;
+    font-weight: 600;
+}
+
+body:not(.light-theme) #addTaskBtn:hover {
+    background: #00b8ae;
+    color: #0a1a28;
+    border-color: #009e96;
+}
+
+/* ─── Light Mode ─────────────────────────────────────────────
+   Inspired by modern white dashboard with cyan + violet accents:
+     Base      → vivid sky-blue page background
+     Surface   → pure white panel & cards
+     Accent    → bright cyan (#00bcd4) — buttons, focus, badges
+     Secondary → soft violet (#7c4dff) — count badge
+     Borders   → very light gray (clean, not tinted)
+     Danger    → professional red (#e53935)
+──────────────────────────────────────────────────────────── */
+body.light-theme {
+    --bg:               #b3e5fc;
+    --text:             #0d1b2a;
+    --panel:            #ffffff;
+    --panel-border:     #e0e0e0;
+    --field-bg:         #f5f9fc;
+    --field-border:     #cfd8dc;
+    --button-bg:        #e0f7fa;
+    --button-hover:     #b2ebf2;
+    --button-border:    #80deea;
+    --task-container-bg:#e0f7fa;
+    --task-bg:          #ffffff;
+    --muted-text:       #607d8b;
+    --focus:            #00bcd4;
+    --focus-shadow:     rgba(0, 188, 212, 0.25);
+    --danger:           #e53935;
+    --shadow-soft:      0 10px 28px rgba(0, 0, 0, 0.12);
+    --shadow-card:      0 2px 12px rgba(0, 188, 212, 0.1);
+}
+
+/* Light-mode specific refinements */
+body.light-theme .task:hover {
+    box-shadow: 0 6px 20px rgba(0, 188, 212, 0.2);
+    border-color: #80deea;
+}
+
+body.light-theme .delete-btn {
+    background: #fff1f2;
+    color: #e53935;
+    border: 1px solid #fca5a5;
+}
+
+body.light-theme .delete-btn:hover {
+    background: #e53935;
+    color: #ffffff;
+    border-color: #e53935;
+}
+
+body.light-theme .count-badge {
+    background: #ede7f6;
+    border-color: #b39ddb;
+    color: #512da8;
+}
+
+body.light-theme h2 {
+    color: #006064;
+}
+
+body.light-theme #addTaskBtn {
+    background: #00bcd4;
+    color: #ffffff;
+    border-color: #0097a7;
+}
+
+body.light-theme #addTaskBtn:hover {
+    background: #0097a7;
+    color: #ffffff;
+    border-color: #00838f;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background: var(--bg);   /* Main background */
+    color: var(--text);      /* Default text color */
+    line-height: 1.45;
+}
+
+/* Main container */
+.container {
+    width: 1000px;
+    max-width: calc(100% - 32px);
+    margin: 34px auto;
+    padding: 24px;
+
+    background: var(--panel);   /* Main panel */
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.title-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.count-badge {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--field-bg);
+    border: 1px solid var(--field-border);
+    color: var(--muted-text);
+}
+
+.keyboard-hint {
+    margin: 0 0 10px;
+    color: var(--muted-text);
+    font-size: 11px;
+}
+
+.filters-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.filters-row select {
+    flex: 1;
+    min-width: 180px;
+    padding: 7px 9px;
+    font-size: 13px;
+    background: var(--field-bg);
+    border: 1px solid var(--field-border);
+    color: var(--text);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Title */
+h2 {
+    font-size: 26px;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+/* Add task section */
+.add-task {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+/* ONLY main task input grows */
+.add-task input {
+    flex: 1;
+    padding: 8px 10px;
+    font-size: 14px;
+    background: var(--field-bg);
+    border: 1px solid var(--field-border);
+    color: var(--text);
+    border-radius: var(--radius-sm);
+}
+
+#dueDateInput {
+    flex: 0 0 138px;
+}
+
+/* Keep general input style for others */
+input {
+    padding: 8px 9px;
+    font-size: 14px;
+    background: var(--field-bg);
+    border: 1px solid var(--field-border);
+    color: var(--text);
+    border-radius: var(--radius-sm);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+/* Buttons */
+button {
+    padding: 8px 11px;
+    font-size: 13px;
+    cursor: pointer;
+    background: var(--button-bg);
+    color: var(--text);
+    border: 1px solid var(--button-border);
+    border-radius: var(--radius-sm);
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    background: var(--button-hover);
+    transform: translateY(-1px);
+}
+
+/* Task section background */
+.task-container {
+    background: var(--task-container-bg);
+    padding: 30px;
+    border-radius: var(--radius-md);
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+/* Individual task */
+.task {
+    flex: 1 1 calc(50% - 25px);  /* Two per row */
+    background: var(--task-bg);
+    padding: 18px;
+    border: 1px solid var(--panel-border);
+    font-size: 16px;
+    box-sizing: border-box;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    transition: transform 0.16s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    animation: task-enter 240ms ease both;
+}
+
+.task:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+}
+
+/* Task header */
+.task-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.task-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.expand-btn {
+    min-width: 36px;
+    padding: 8px 10px;
+    line-height: 1;
+    font-size: 16px;
+}
+
+.task-subtasks {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(-4px);
+    transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.task.expanded .task-subtasks,
+.task.preview-open .task-subtasks {
+    max-height: 900px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.task-meta {
+    margin-bottom: 10px;
+}
+
+.due-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.mini-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+.due-label {
+    font-size: 13px;
+    color: var(--muted-text);
+}
+
+.due-label.overdue {
+    color: var(--danger);
+    font-weight: 700;
+}
+
+.task-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.task:focus-within {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+}
+
+.editable-text {
+    cursor: text;
+}
+
+.inline-edit {
+    width: 100%;
+    max-width: 100%;
+    font-size: 14px;
+    padding: 6px 8px;
+}
+
+/* Subtask input section */
+.subtask-input {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    width: 100%;
+}
+
+.subtask-input input {
+    flex: 1;              /* This makes it stretch fully */
+    padding: 10px;
+    font-size: 15px;
+}
+
+/* Subtasks */
+.subtask {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
+}
+
+/* Completed text */
+.completed {
+    text-decoration: line-through;
+    color: var(--muted-text);
+}
+
+/* Delete button */
+.delete-btn {
+    background: var(--danger);
+    border: none;
+    color: #fff;
+    border-radius: var(--radius-sm);
+}
+
+/* SEARCH INPUT */
+#searchInput {
+    width: 100%;
+    margin-right: 0;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+
+    background: var(--field-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+
+    transition: all 0.2s ease;
+}
+
+#searchInput::placeholder {
+    color: var(--muted-text);
+    font-size: 13px;
+}
+
+#searchInput:focus {
+    outline: none;
+    border: 1px solid var(--focus);
+    box-shadow: var(--shadow-focus);
+}
+
+input:focus,
+select:focus,
+button:focus-visible {
+    outline: none;
+    border-color: var(--focus);
+    box-shadow: var(--shadow-focus);
+}
+
+.search-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--muted-text);
+    letter-spacing: 0.5px;
+}
+
+.empty-state {
+    margin-top: 18px;
+    font-size: 15px;
+    color: var(--muted-text);
+    text-align: center;
+    display: none;
+}
+
+.undo-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%) translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: var(--task-bg);
+    border: 1px solid var(--panel-border);
+    box-shadow: var(--shadow-soft);
+    z-index: 999;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.undo-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+.task-removing {
+    animation: task-remove 220ms ease forwards !important;
+}
+
+@keyframes task-enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.99);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes task-remove {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: auto;
+        margin: 30px 16px;
+        padding: 24px;
+    }
+
+    .task {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 680px) {
+    .title-row,
+    .add-task,
+    .filters-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .add-task input,
+    #dueDateInput,
+    .filters-row select,
+    button {
+        width: 100%;
+    }
+
+    #searchInput {
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+
+    .task-container {
+        padding: 18px;
+        gap: 14px;
+    }
+
+    .due-actions { flex-wrap: wrap; }
+
+    .undo-toast {
+        width: calc(100% - 24px);
+        justify-content: space-between;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .task,
+    .task-removing,
+    button,
+    .undo-toast {
+        animation: none !important;
+        transition: none !important;
+    }
+}

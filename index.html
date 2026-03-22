@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="title-row">
+        <div class="title-group">
+            <h2>My Tasks</h2>
+            <span id="countBadge" class="count-badge">0 active · 0 done</span>
+        </div>
+        <button id="themeToggleBtn" type="button">Switch Theme</button>
+    </div>
+
+    <p class="keyboard-hint">Hints: Click task header or ▸ to show subtasks · Double-click task text to edit · Delete key removes focused task/subtask.</p>
+
+    <input type="text" id="searchInput" placeholder="Search tasks...">
+
+    <div class="filters-row">
+        <select id="statusFilter" aria-label="Filter by status">
+            <option value="all">All Tasks</option>
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+        </select>
+
+        <select id="dueFilter" aria-label="Filter by due date">
+            <option value="all">All Due Dates</option>
+            <option value="today">Due Today</option>
+            <option value="upcoming">Upcoming</option>
+            <option value="overdue">Overdue</option>
+            <option value="no-date">No Due Date</option>
+        </select>
+    </div>
+    
+    <div class="add-task">
+        <input type="text" id="taskInput" placeholder="Enter task">
+        <input type="date" id="dueDateInput" aria-label="Task due date">
+        <button id="addTaskBtn">Add Task</button>
+    </div>
+
+    <div id="taskList" class="task-container"></div>
+    <p id="emptyState" class="empty-state"> No tasks match your filters.</p>
+</div>
+
+<div id="undoToast" class="undo-toast" role="status" aria-live="polite">
+    <span id="undoMessage">Task deleted</span>
+    <button id="undoBtn" type="button">Undo</button>
+</div>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>
