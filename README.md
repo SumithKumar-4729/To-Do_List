@@ -1,6 +1,6 @@
 # To-Do List
 
-A simple browser-based task manager built with vanilla HTML, CSS, and JavaScript.
+A simple browser-based task manager built with HTML, CSS, and JavaScript.
 
 ## Features
 
