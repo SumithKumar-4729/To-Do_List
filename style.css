@@ -191,20 +191,23 @@ body {
 
 .filters-row {
     display: flex;
-    gap: 8px;
-    margin-bottom: 10px;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
 }
 
 .filters-row select {
     flex: 1;
-    min-width: 180px;
-    padding: 7px 9px;
-    font-size: 13px;
+    min-width: 160px;
+    padding: 9px 10px;
+    font-size: 14px;
     background: var(--field-bg);
     border: 1px solid var(--field-border);
     color: var(--text);
     border-radius: var(--radius-sm);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    min-height: 40px;
+    box-sizing: border-box;
 }
 
 /* Title */
@@ -217,14 +220,16 @@ h2 {
 /* Add task section */
 .add-task {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     margin-bottom: 14px;
+    flex-wrap: wrap;
 }
 
 /* ONLY main task input grows */
 .add-task input {
     flex: 1;
-    padding: 8px 10px;
+    padding: 10px 10px;
+    min-height: 40px;
     font-size: 14px;
     background: var(--field-bg);
     border: 1px solid var(--field-border);
@@ -233,23 +238,28 @@ h2 {
 }
 
 #dueDateInput {
-    flex: 0 0 138px;
+    flex: 0 0 130px;
+    min-height: 40px;
+    padding: 10px 10px;
 }
 
 /* Keep general input style for others */
 input {
-    padding: 8px 9px;
+    padding: 10px 9px;
     font-size: 14px;
     background: var(--field-bg);
     border: 1px solid var(--field-border);
     color: var(--text);
     border-radius: var(--radius-sm);
     transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    min-height: 40px;
+    box-sizing: border-box;
 }
 
 /* Buttons */
 button {
-    padding: 8px 11px;
+    padding: 10px 12px;
+    min-height: 40px;
     font-size: 13px;
     cursor: pointer;
     background: var(--button-bg);
@@ -267,22 +277,22 @@ button:hover {
 /* Task section background */
 .task-container {
     background: var(--task-container-bg);
-    padding: 30px;
+    padding: 20px;
     border-radius: var(--radius-md);
 
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    gap: 25px;
+    gap: 20px;
 }
 
 /* Individual task */
 .task {
     flex: 1 1 calc(50% - 25px);  /* Two per row */
     background: var(--task-bg);
-    padding: 18px;
+    padding: 16px;
     border: 1px solid var(--panel-border);
-    font-size: 16px;
+    font-size: 15px;
     box-sizing: border-box;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-card);
@@ -310,10 +320,11 @@ button:hover {
 }
 
 .expand-btn {
-    min-width: 36px;
+    min-width: 40px;
     padding: 8px 10px;
     line-height: 1;
     font-size: 16px;
+    min-height: 40px;
 }
 
 .task-subtasks {
@@ -343,8 +354,9 @@ button:hover {
 }
 
 .mini-btn {
-    padding: 6px 10px;
+    padding: 8px 11px;
     font-size: 13px;
+    min-height: 38px;
 }
 
 .due-label {
@@ -361,6 +373,8 @@ button:hover {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
+    flex: 1;
 }
 
 .task:focus-within {
@@ -416,6 +430,9 @@ button:hover {
     border: none;
     color: #fff;
     border-radius: var(--radius-sm);
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 13px;
 }
 
 /* SEARCH INPUT */
@@ -524,49 +541,157 @@ button:focus-visible {
 @media (max-width: 1024px) {
     .container {
         width: auto;
-        margin: 30px 16px;
-        padding: 24px;
+        margin: 20px 16px;
+        padding: 18px;
     }
 
     .task {
         flex: 1 1 100%;
     }
+
+    h2 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 18px auto;
+        padding: 16px;
+    }
 }
 
 @media (max-width: 680px) {
-    .title-row,
-    .add-task,
-    .filters-row {
-        flex-direction: column;
-        align-items: stretch;
+    .container {
+        margin: 16px auto;
+        padding: 16px;
     }
 
-    .add-task input,
-    #dueDateInput,
-    .filters-row select,
-    button {
+    .title-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .title-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    h2 {
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
+
+    #themeToggleBtn {
         width: 100%;
+        padding: 12px 14px;
+        min-height: 44px;
+    }
+
+    .keyboard-hint {
+        display: none;
+    }
+
+    .filters-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .filters-row select {
+        min-width: auto;
+        width: 100%;
+        padding: 12px 10px;
+        min-height: 44px;
+        font-size: 16px;
+    }
+
+    .add-task {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .add-task input {
+        width: 100%;
+        padding: 12px 10px;
+        min-height: 44px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+
+    #dueDateInput {
+        flex: 1;
+        width: 100%;
+        padding: 12px 10px;
+        min-height: 44px;
+        font-size: 16px;
+    }
+
+    #addTaskBtn {
+        width: 100%;
+        padding: 12px 14px;
+        min-height: 44px;
+        font-size: 16px;
     }
 
     #searchInput {
         width: 100%;
+        padding: 12px 10px;
+        min-height: 44px;
+        font-size: 16px;
+        box-sizing: border-box;
+        margin-bottom: 12px;
     }
 
-    h2 {
-        font-size: 26px;
-        margin-bottom: 10px;
+    .task {
+        flex: 1 1 100%;
+        padding: 14px;
+    }
+
+    .task-header {
+        gap: 8px;
+    }
+
+    .expand-btn {
+        min-width: 44px;
+        padding: 10px;
+        min-height: 44px;
+    }
+
+    .delete-btn {
+        min-width: 44px;
+        padding: 10px;
+        min-height: 44px;
+    }
+
+    .mini-btn {
+        min-height: 40px;
+        padding: 8px 12px;
     }
 
     .task-container {
-        padding: 18px;
-        gap: 14px;
+        padding: 12px;
+        gap: 10px;
+        flex-direction: column;
     }
 
-    .due-actions { flex-wrap: wrap; }
+    .due-actions { 
+        flex-wrap: wrap;
+        gap: 8px;
+    }
 
     .undo-toast {
         width: calc(100% - 24px);
         justify-content: space-between;
+        bottom: 16px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+
+    input, select {
+        font-size: 16px;
     }
 }
 
